@@ -16,9 +16,9 @@ For each of the encountered classes, perform the same set of operations:
 
 •	iterate through the list of subclasses delivered by the __subclasses__() method, and recursively invoke the print_exception_tree() function, incrementing the nesting level respectively.
 
-Note how we've drawn the branches and forks. The printout isn't sorted in any way - you can try to sort it yourself, if you want a challenge. 
+Note how we've drawn the branches and forks. The printout isn't sorted in any way - you can try to sort it yourself, if you want a challenge. Moreover, there are some subtle inaccuracies in the way in which some branches are presented. That can be fixed, too, if you wish.
 
-**Challenge accepted. Complete code includes:**
+**Challenge accepted: sort the list. Complete code uses lambda-functions:**
 ```
 def print_exception_tree(thisclass, nest = 0):
     # It is a decoration for the visual representation of a tree.
@@ -37,4 +37,19 @@ def print_exception_tree(thisclass, nest = 0):
     # These are recursive tree-drawing calls for each subclass
     for subclass in subclasses:
         print_exception_tree(subclass, nest + 1)
+```
+
+
+**Second challenge: remove duplicates from list**
+```
+    # This is version 2 of code to remove duplicates from subclasses list
+    # The list of subclasses is sorted, so we can simply compare names of two adjacent items
+    final_list = []                             # Initiate a new list to store unique subclasses
+    prev_subclass_name = ""                      # Initiate a variable to keep the previous name
+    for subclass in subclasses:                   # Loop through the list of subclasses
+        if subclass.__name__ != prev_subclass_name:# If two adjacent entries have diff. names
+            final_list.append(subclass)            # Store current subclass in final_list
+        prev_subclass_name = subclass.__name__     # And remember name of current subclass
+    subclasses = final_list                        # After all, we got a list of unique subclasses
+
 ```
