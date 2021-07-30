@@ -18,16 +18,6 @@ def print_exception_tree(thisclass, nest = 0):
     subclasses = sorted(subclasses,                      # Use sorted() with Key
                key = lambda subclass: subclass.__name__) # Use lambda to call names of classes
 
-##    # Code V1
-##    final_list = []
-##    name_list = []
-##    for subclass in subclasses:
-##        name_to_append = subclass.__name__
-##        if name_to_append not in name_list:
-##            name_list.append(name_to_append)
-##            final_list.append(subclass)
-##    subclasses = final_list
-
     # This is version 2 of code to remove duplicates from subclasses list
     # The list of subclasses is sorted, so we can simply compare names of two adjacent items
     final_list = []                             # Initiate a new list to store unique subclasses
